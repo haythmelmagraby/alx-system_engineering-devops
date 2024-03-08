@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+#5. Don't stop me now!
+
+the_pid=$(pgrep "bash ./4-to_infinity_and_beyond" -f)
+
+if [ -n "$the_pid" ]; then
+    kill -15 "$the_pid"
+fi
+
