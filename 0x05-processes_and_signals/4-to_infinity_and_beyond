@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #4. To infinity and beyond
 
-while true;
-	do
-	echo "To infinity and beyond"
+while true
+do
+echo "To infinity and beyond"
 done
