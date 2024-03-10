@@ -5,17 +5,16 @@ h=1
 while [ "$h" -le 20 ]
 do
 echo $h
-if [ "$h" -eq 4 ]
-then
+case $h in 
+4)
 echo "bad luck from China"
-fi
-if [ "$h" -eq 9 ]
-then
+;;
+9)
 echo "bad luck from Japan"
-fi
-if [ "$h" -eq 17 ]
-then
+;;
+17)
 echo "bad luck from Italy"
-fi
+;;
+esac
 h=$((h+1))
 done 
