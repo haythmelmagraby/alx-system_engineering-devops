@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 #Let's parse Apache logs
 
-awk '{ print $1 " " $9 }' apache-access.log | sort | uniq -c
+awk '{ print $1 " " $9 }' apache-access.log | sort -nr
