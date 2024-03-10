@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+#Read and cut
+
+while IFS= read -r file
+do
+data=$(echo "$file" | cut -f 1,3,6 -d ":")
+done < "/etc/passwd"
