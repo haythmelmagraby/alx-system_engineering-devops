@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+#Until Best School loop
+
+counter=1
+until [ "$counter" -gt 10 ]
+do
+echo "Best School"
+counter=$((counter+1))
+done
