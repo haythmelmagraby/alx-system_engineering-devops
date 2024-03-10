@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+#Let's parse Apache logs
+
+while IFS= read -r file
+do
+u=$(echo "$file" | cut -f 1 -d ":")
+p=$(echo "$file" | cut -f 2 -d ":")
+uid=$(echo "$file" | cut -f 3 -d ":")
+gid=$(echo "$file" | cut -f 4 -d ":")
+uinfo=$(echo "$file" | cut -f 5 -d ":")
+h=$(echo "$file" | cut -f 6 -d ":")
+c=$(echo "$file" | cut -f 7 -d ":")
+echo -n "The user $u is part of the $gid gang, "
+echo -n "lives in $h and rides $c"
+echo -n "$uid's place is protected by the passcode $p, "
+echo "more info about the user here: $uinfo"
+done < "/etc/passwd"
