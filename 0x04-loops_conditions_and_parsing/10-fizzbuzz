@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# FizzBuzz
+
+for h in {1..100}
+do
+if [ $((h%3)) -eq 0 ] && [ $((h%5)) -eq 0 ]
+then
+echo "FizzBuzz"
+elif [ $((h%3)) -eq 0 ]
+then
+echo "Fizz"
+elif [ $((h%5)) -eq 0 ]
+then
+echo "Buzz"
+else
+echo "$h"
+fi
+done
