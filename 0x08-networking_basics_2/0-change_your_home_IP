@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+cp /etc/hosts ~/host.temp
+echo "127.0.0.1 localhost" > ~/host.temp
+echo "8.8.8.8 facebook.com" >> ~/host.temp
+cp -f ~/host.temp /etc/hosts
