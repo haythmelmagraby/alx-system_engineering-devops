@@ -1,3 +1,4 @@
+##!/usr/bin/pup
 #install
 package { 'flask':
   ensure => '2.1.0',
