@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """ Gather data from an API """
-mport requests
+import requests
 from sys import argv
 
 
