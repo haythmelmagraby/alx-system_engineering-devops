@@ -13,7 +13,7 @@ if __name__ == "__main__":
 
     tds = url + "/todos"
     res = requests.get(tds)
-    task = response.json()
+    task = res.json()
 
     with open("{}.csv".format(eid), "w") as f:
         for the_task in task:
