@@ -13,12 +13,12 @@ if __name__ == "__main__":
     user_name = res.json().get("username")
 
     tds = url + "/todos"
-    res = requests.get(todoUrl)
+    res = requests.get(tds)
     task = res.json()
 
     dicte = {eid: []}
     for the_task in task:
-        dic[eid].append(
+        dicte[eid].append(
             {
                 "task": the_task.get("title"),
                 "completed": the_task.get("completed"),
