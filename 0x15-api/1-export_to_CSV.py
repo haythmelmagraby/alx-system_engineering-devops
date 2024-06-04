@@ -19,6 +19,7 @@ if __name__ == "__main__":
         for the_task in task:
             f.write(
                 '"{}","{}","{}","{}"\n'.format(
-                    eid, user_name, the_task.get("completed"), the_task.get("title")
+                    eid, user_name, the_task.get("completed"),
+                    the_task.get("title")
                 )
             )
