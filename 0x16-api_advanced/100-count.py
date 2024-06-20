@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """3. Count it!"""
-from requests
+import requests
 
 
 def count_words(subreddit, word_list, word_count=[], page_after=None):
@@ -31,7 +31,7 @@ def count_words(subreddit, word_list, word_count=[], page_after=None):
         url = ('https://www.reddit.com/r/{}/hot.json?after={}'
                .format(subreddit,
                        page_after))
-        req = get(url, headers=client_agnet, allow_redirects=False)
+        req = requests.get(url, headers=client_agent, allow_redirects=False)
 
         if req.status_code == 200:
             for child in req.json()['data']['children']:
