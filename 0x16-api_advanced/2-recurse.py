@@ -5,36 +5,22 @@ import requests
 
 def recurse(subreddit, hot_list=[], after='', count=0):
     """list containing the titles of all hot articles for a given subreddit"""
-    if subreddit is None or not isinstance(subreddit, str):
-        return 0
-    the_url = 'https://www.reddit.com/r/{}/about.json'.format(subreddit)
-    client_agent = {'User-agent': 'haythm ubuntu 20.2'}
-    parameters = {
-            'after': after,
-            'count': count,
-            'limit': 10
-            }
-    res = requests.get(the_url, headers=client_agent, params=parameters,
-                       allow_redirects=False)
+    req = requests.get(
+        "https://www.reddit.com/r/{}/hot.json".format(subreddit),
+        headers={"User-Agent": "Custom"},
+        params={"after": after},
+    )
 
-    if res.status_code == 404:
-        print("None")
-        return
+    if req.status_code == 200:
+        for get_data in req.json().get("data").get("children"):
+            d = get_data.get("data")
+            t = d.get("title")
+            hot_list.append(t)
+        after = req.json().get("data").get("after")
 
-    try:    
-        result = res.json().get('data')
-        after = result.get('after')
-        if result.get('dist') is not None:
-            count += result.get('dist')
-        if result.get('children') is not None:
-            [hot_list.append(child.get('data').get('title'))
-             for child in result.get('children')]
-
-        if after is not None:
-            return recuse(subreddit, hot_list, after, count)
-        else:
+        if after is None:
             return hot_list
-
-    except Exception as e:
-        print(e)
-        return ''
+        else:
+            return recurse(subreddit, hot_list, after)
+    else:
+        return None
