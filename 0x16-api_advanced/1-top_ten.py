@@ -4,22 +4,16 @@
 
 def top_ten(subreddit):
     """prints the titles of the first 10 hot posts"""
-    if subreddit is None or not isinstance(subreddit, str):
-        return 0
-    the_url = 'https://www.reddit.com/r/{}/about.json'.format(subreddit)
-    client_agent = {'User-agent': 'haythm ubuntu 20.2'}
-    parameters = {'limit': 10}
-    res = requests.get(the_url, headers=client_agent, params=parameters,
-                       allow_redirects=False)
+    req = requests.get(
+        "https://www.reddit.com/r/{}/hot.json".format(subreddit),
+        headers={"User-Agent": "Custom"},
+        params={"limit": 10},
+    )
 
-    if res.status_code == 404:
-        print("None")
-        return
-
-    try:
-        result = res.json().get('data')
-        [print(child.get('data').get('title'))
-         for child in result.get('children')]
-
-    except Exception:
-        return 0
+    if req.status_code == 200:
+        for get_data in req.json().get("data").get("children"):
+            d = get_data.get("data")
+            t = d.get("title")
+            print(t)
+    else:
+        print(None)
