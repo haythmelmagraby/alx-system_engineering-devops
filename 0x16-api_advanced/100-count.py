@@ -37,7 +37,7 @@ def count_words(subreddit, word_list, word_count=[], page_after=None):
             for child in req.json()['data']['children']:
                 i = 0
                 for i in range(len(word_list)):
-                    for word in [wor for wor 
+                    for word in [wor for wor
                                  in child['data']['title'].split()]:
                         word = word.lower()
                         if word_list[i] == word:
