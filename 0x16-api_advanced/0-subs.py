@@ -8,7 +8,7 @@ def number_of_subscribers(subreddit):
         return 0
     the_url = 'https://www.reddit.com/r/{}/about.json'.format(subreddit)
     client_agent = {'User-agent': 'haythm ubuntu 20.2'}
-    res = requests.get(the_url, headers=client_agent, allow_redircts=False)
+    res = requests.get(the_url, headers=client_agent, allow_redirects=False)
     try:
         return res.json().get('data').get('subscribers')
     except Exception:
